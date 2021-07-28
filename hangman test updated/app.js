@@ -243,7 +243,7 @@ if (page == "") {
 	// Button click function
 	var wrongNum = 0;
 	$("button").on("click", function(){
-		$(this).addClass("used");
+		$(this).addClass("selected");
 		$(this).attr("disabled", "true");
 		var winMove = false;
 
