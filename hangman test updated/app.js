@@ -244,7 +244,7 @@ if (page == "") {
 	var wrongNum = 0;
 	$("button").on("click", function(){
 		$(this).addClass("used");
-		$(this).prop("disabled", "true");
+		$(this).attr("disabled", "true");
 		var winMove = false;
 
 		var checkWord;
@@ -269,10 +269,10 @@ if (page == "") {
 		  $(".alphabet").each(function( index ) {
 			  if ( $(this).hasClass("success") ) {
 				  rightChoices.push(index);
-				  if (rightChoices.length === chosenWordArray.length) {
+				  if (chosenWordArray.length === rightChoices.length) {
 					  $("#container").hide();
-					  $("button").prop("disabled", "true");
-					  $(".category").text("Great job you guessed the secret word!");
+					  $("button").attr("disabled", "true");
+					  $(".category").text("Great job! you guessed the secret word!");
 					  $(".category").append("<br><button class='restart'>Start Over?</button>");
 				  }
 			  }
