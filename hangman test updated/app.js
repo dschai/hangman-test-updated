@@ -208,8 +208,8 @@ if (page == "") {
 	console.log(randCatList);
 
 	//function declaration for picking a random word out of a category array
-	function pickWord(categoryArray) {
-	  return (categoryArray[Math.floor((Math.random() * randCatList.length))]).toUpperCase();
+	function pickWord(catList) {
+	  return (catList[Math.floor((Math.random() * randCatList.length))]).toUpperCase();
 
 	}
 
@@ -230,11 +230,11 @@ if (page == "") {
 
 
 	function drawSquares() {
-	  // Draw squares for secret word & hide letters
+	  // Draw squares for secret word & hide alphabets
 	  for(var i = 0; i < chosenWord.length; i++) {
-		$('#container').append('<div class="letter ' + i + '"></div>');
+		$('#container').append('<div class="alphabet ' + i + '"></div>');
 		$('#container').find(":nth-child(" + (i + 1) + ")").text(chosenWordArray[i]);
-		$(".letter").css("color", "#ABE3BE");  //CHANGE THE COLOR
+		$(".alphabet").css("color", "#ABE3BE"); 
 	  } 
 	}
 	drawSquares();
@@ -249,10 +249,10 @@ if (page == "") {
 
 		var checkWord;
 		checkWord = () => {
-		  // Check if clicked letter is in secret word
-		  var userGuess = $(this).text();
+		  // Check if clicked alphabet is in secret word
+		  var input = $(this).text();
 		  for (var i = 0; i < chosenWord.length; i++) {
-			  if (userGuess === chosenWord.charAt(i)) {
+			  if (input === chosenWord.charAt(i)) {
 				  $('#container').find(":nth-child(" + (1 + i) + ")").css("color", "#191970").addClass("success");
 				  winMove = true;
 			  }
@@ -265,11 +265,11 @@ if (page == "") {
 		//function expression
 		var processCorrectGuesses = function() {
 		  //Check who wins
-		  var goodGuesses = [];
-		  $(".letter").each(function( index ) {
+		  var rightChoices = [];
+		  $(".alphabet").each(function( index ) {
 			  if ( $(this).hasClass("success") ) {
-				  goodGuesses.push(index);
-				  if (goodGuesses.length === chosenWordArray.length) {
+				  rightChoices.push(index);
+				  if (rightChoices.length === chosenWordArray.length) {
 					  $("#container").hide();
 					  $("button").prop("disabled", "true");
 					  $(".category").text("Great job you guessed the secret word!");
