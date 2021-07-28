@@ -63,14 +63,12 @@ div > .keyboard:hover {
 div > button:focus {
 	outline:0;
 }
-
-
-.play-again {
+.restart {
 	margin-top: 20px;
 	width: 190px;
 	height: 45px;
-	background: #4ABDAC;
-	border: 1px solid #4ABDAC;
+	background: #ABE3BE;
+	border: 1px solid #ABE3BE;
 }
 
 body > h3 {
