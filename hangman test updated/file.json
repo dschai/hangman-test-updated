@@ -1,0 +1,5 @@
+{
+    "vegetable": ["celery", "tomato", "cucumber", "pumpkin", "artichoke", "asparagus", "beetroot", "ginger", "eggplant", "lettuce"],
+    "color": ["red", "yellow", "blue", "purple", "pink", "orange", "cyan", "turqoise", "black"]
+    
+}

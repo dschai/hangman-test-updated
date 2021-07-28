@@ -1,0 +1,191 @@
+
+	* {
+		font-family: 'Raleway', sans-serif;
+		text-align: center;
+		background: #191970; 
+		color: white; 
+	}
+
+	.button_1 > button {
+		font-weight: bold;
+		font-size: 3vw;
+		color: white;
+		border: 1px solid #191970; 
+		background: #191970;
+		letter-spacing: 2.5;
+		text-transform: uppercase;
+		
+	}
+
+	div > #play:hover {background-color: #3e8e41}
+
+	div > #create:hover {background-color: #3e8e41}
+
+	div > #play:active {
+		background-color: #3e8e41;
+		box-shadow: 0 5px red;
+		transform: translateY(4px);
+	}
+
+
+	div > #create:active {
+		background-color: #3e8e41;
+		box-shadow: 0 5px red;
+		transform: translateY(4px);
+	}
+
+	div > button:focus {
+		outline:0;
+	}
+
+
+	div > button::selection, body > h1::selection {
+		color: red;
+		font-weight:bold;
+	}
+
+
+	body > h1::before {
+		content: "***";
+		color:yellow;
+		background-color:#191970;
+	}
+
+	body > h1::after {
+		content: "***";
+		color:yellow;
+		background-color:#191970;
+	}
+
+
+	h1 ~ img {
+		position: absolute;
+		left: 15%;
+		top: 20%;
+		width: 30%;
+	}
+	
+	h2 ~ h1 {
+
+		font-size: 7vw;
+		position: absolute;
+		left: 650px;
+		top: 150px;
+		font-weight: bold;
+	}
+
+
+	div >  #play {
+		position: absolute;
+		top: 60%;
+		left: 50%;
+	}
+
+	#play ~ #create {
+		position: absolute;
+		top: 60%;
+		left: 70%;
+	}
+
+	p {
+		visibility: hidden;
+		position: absolute;
+		left:800px;
+		bottom: 400px;
+		font-size: 25vw;
+		color: #4ABDAC;
+		font-weight: bold;
+	}
+
+	[attribute] {
+		background-color:red !important;
+	}
+
+	/**phone dimensions**/
+	@media only screen and (max-width: 415px) {
+		h1 + img {
+			position: absolute;
+			left: 20%;
+			top: 10%;
+			width: 50%;
+		}
+		
+		h2 ~ h1 {
+
+			font-size: 15vw;
+			position: absolute;
+			left: 20%;
+			top: 40%;
+			font-weight: bold;
+		}
+		body > h1::before {
+			content: "";
+			background-color:#191970;
+		}
+		
+		body > h1::after {
+			content: "";
+			background-color:#191970;
+		}
+
+		div >  #play {
+			position: absolute;
+			top: 65%;
+			left: 15%;
+			font-size: 10vw;
+		}
+		
+		#play ~ #create {
+			position: absolute;
+			top: 65%;
+			left: 50%;
+			font-size: 10vw;
+		}
+		
+	}
+
+
+
+	/*ipad dimensions*/
+	@media only screen and (min-width: 416px) and (max-width: 1025px) {
+		h1 ~ img {
+			position: absolute;
+			left: 25%;
+			top: 20%;
+			width: 50%;
+		}
+
+
+		h1 {
+			font-size: 15vw !important;
+			top:60% !important;
+			left: 20% !important;
+		}
+
+		body > h1::before {
+			content: "";
+			background-color:#191970;
+		}
+		
+		body > h1::after {
+			content: "";
+			background-color:#191970;
+		}
+
+		div >  #play {
+			position: absolute;
+			top: 90%;
+			left: 25%;
+			font-size: 7vw;
+		}
+		
+		#play ~ #create {
+			position: absolute;
+			top: 90%;
+			left: 55%;
+			font-size: 7vw;
+
+		}
+		
+	}
+
