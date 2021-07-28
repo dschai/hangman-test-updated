@@ -273,7 +273,7 @@ if (page == "") {
 					  $("#container").hide();
 					  $("button").prop("disabled", "true");
 					  $(".category").text("Great job you guessed the secret word!");
-					  $(".category").append("<br><button enabled class='restart'>Play again?</button>");
+					  $(".category").append("<br><button enabled class='restart'>Start Over?</button>");
 				  }
 			  }
 		  });
@@ -293,7 +293,7 @@ if (page == "") {
 			$("#container").hide();
 			$("button").attr("disabled", "true");
 			$(".category").text("You Lost. The real answer is " + chosenWord);
-			$(".category").append("<br><button enabled class='restart'>Play again?</button>");
+			$(".category").append("<br><button enabled class='restart'>Start Over?</button>");
 		  }
 		}
 		processWrong();
