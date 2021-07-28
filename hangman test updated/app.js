@@ -186,26 +186,24 @@ if (page == "") {
 
 
 	window.categories = [];
-	  fetch("file.json") 
-	  .then(response=>{
+	fetch("file.json") 
+	.then(response=>{
 
-		  return response.json();
-	  })
-	  .then(response => {
-		  window.categories.push(response.vegetable);
-		  window.categories.push(response.color);
-	
+		return response.json();
+	})
+	.then(response => {
+		window.categories.push(response.vegetable);
+		window.categories.push(response.color);
 
-	
-	  //function expression for picking a random category
-	  var pickCategory = function (categories) {
-		var num = Math.floor((Math.random() * categories.length));
-		console.log(num)
-		return categories[num];
-	  }
+
+
+	//function expression for picking a random category
+	var pickCategory = function (categories) {
+	var num = Math.floor((Math.random() * categories.length));
+	return categories[num];
+	}
 
 	var randCatList = pickCategory(window.categories);
-	console.log(randCatList);
 
 	//function declaration for picking a random word out of a category array
 	function pickWord(catList) {
@@ -249,14 +247,13 @@ if (page == "") {
 
 		var checkWord;
 		checkWord = () => {
-		  // Check if clicked alphabet is in secret word
-		  var input = $(this).text();
-		  for (var i = 0; i < chosenWord.length; i++) {
-			  if (input === chosenWord.charAt(i)) {
-				  $('#container').find(":nth-child(" + (1 + i) + ")").css("color", "#191970").addClass("success");
-				  winMove = true;
-			  }
-		  }
+		// Check if clicked alphabet is in secret word	 
+		for (var i = 0; i < chosenWord.length; i++) {
+			if ($(this).text() === chosenWord.charAt(i)) {
+				$('#container').find(":nth-child(" + (1 + i) + ")").css("color", "#191970").addClass("success");
+				winMove = true;
+			}
+		}
 		}
 		checkWord();
 
