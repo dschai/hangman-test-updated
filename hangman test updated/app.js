@@ -21,12 +21,14 @@ class Rectangle {
 	}
   }
 
+  //add a small decorative red square
   var rec = new Rectangle(10, 10);
   rec.addToDom(10, 10);
 
  
+  //play button leads to page.html
   $( "#play" ).click(function() {
-	  document.location.href = 'index.html'
+	  document.location.href = 'page.html'
 	});
  
  
@@ -192,17 +194,15 @@ if (page == "") {
 	  .then(response => {
 		  window.categories.push(response.vegetable);
 		  window.categories.push(response.color);
-	      console.log(window.categories + "CATEGORIES");
-
-
 	
+
 	
 	  //function expression for picking a random category
 	  var pickCategory = function (categories) {
 		var num = Math.floor((Math.random() * categories.length));
 		console.log(num)
 		return categories[num];
-	}
+	  }
 
 	var randomCategoryArray = pickCategory(window.categories);
 	console.log(randomCategoryArray);
@@ -215,7 +215,6 @@ if (page == "") {
 
    
 	var randomWord = pickWord(randomCategoryArray);
-	console.log(randomWord);
 	var randomWordArray = randomWord.split("");
 
 	//arrow function for printing category name
@@ -223,7 +222,7 @@ if (page == "") {
 	printCat = () => {
 		if ($.inArray("celery", randomCategoryArray) > -1) {
 		  $(".category").text("Category is vegetable");
-	  } else if ($.inArray("red", randomCategoryArray) > -1) {
+	  } else {
 		  $(".category").text("Category is color");
 	  }
 	}
@@ -235,14 +234,14 @@ if (page == "") {
 	  for(var i = 0; i < randomWord.length; i++) {
 		$('#container').append('<div class="letter ' + i + '"></div>');
 		$('#container').find(":nth-child(" + (i + 1) + ")").text(randomWordArray[i]);
-		$(".letter").css("color", "#4ABDAC");
-	  }
+		$(".letter").css("color", "#ABE3BE");  //CHANGE THE COLOR
+	  } 
 	}
 	drawSquares();
 
 
 	// Button click function
-	var wrongGuesses = 0;
+	var wrongNum = 0;
 	$("button").on("click", function(){
 		$(this).addClass("used");
 		$(this).prop("disabled", "true");
@@ -254,7 +253,7 @@ if (page == "") {
 		  var userGuess = $(this).text();
 		  for (var i = 0; i < randomWord.length; i++) {
 			  if (userGuess === randomWord.charAt(i)) {
-				  $('#container').find(":nth-child(" + (i + 1) + ")").css("color", "#EFEFEF").addClass("winner");
+				  $('#container').find(":nth-child(" + (1 + i) + ")").css("color", "#191970").addClass("success");
 				  matchFound = true;
 			  }
 		  }
@@ -265,10 +264,10 @@ if (page == "") {
 
 		//function expression
 		var processCorrectGuesses = function() {
-		  //Check for winner
+		  //Check who wins
 		  var goodGuesses = [];
 		  $(".letter").each(function( index ) {
-			  if ( $(this).hasClass("winner") ) {
+			  if ( $(this).hasClass("success") ) {
 				  goodGuesses.push(index);
 				  if (goodGuesses.length === randomWordArray.length) {
 					  $("#container").hide();
@@ -283,25 +282,24 @@ if (page == "") {
 		processCorrectGuesses();
 
 		//function declaration
-		function processWrongGuesses() {
+		function processWrong() {
 		  // If no match, increase count and add appropriate image
 		  if (matchFound === false) {
-			wrongGuesses += 1;
-			$("#hangman").attr("src", "img/" + wrongGuesses + ".png");
+			wrongNum += 1;
+			$("#hangman").attr("src", "img/" + wrongNum+ ".png");
 		  }
 		  // If wrong guesses gets to 7 exit the game
-		  if (wrongGuesses === 7) {
+		  if (wrongNum === 7) {
 			$("#container").hide();
-			$("button").prop("disabled", "true");
-			$(".category").text("Sorry you lost! The secret word was " + randomWord);
-			$(".category").append("<br><button enabled class='play-again'>Play again?</button>");
+			$("button").attr("disabled", "true");
+			$(".category").text("You Lost. The real answer is " + randomWord);
+			$(".category").append("<br><button enabled class='restart'>Play again?</button>");
 		  }
 		}
-		processWrongGuesses();
-
+		processWrong();
 
 		// Play again button
-		$(".play-again").on("click", function(){
+		$(".restart").on("click", function(){
 			location.reload();
 		});
 

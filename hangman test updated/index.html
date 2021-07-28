@@ -4,67 +4,26 @@
     <meta charset="utf-8">
     <title>Hangman</title>
     <meta name = "viewport" content= "width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes"/>
-    <link rel="stylesheet" href="style.css">
+
+	<link rel="stylesheet" href="styleOne.css">
+    <link rel="icon" href="img/noose.png">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<p></p>
-	<span id="audio"></span>
-	  
-	<h1 class="h1_2">Hangman</h1>
-
-	<div class="keydiv_1">
-		<button class="keyboard" id = "Q">Q</button>
-		<button class="keyboard" id = "W">W</button>
-		<button class="keyboard" id = "E">E</button>
-		<button class="keyboard" id = "R">R</button>
-		<button class="keyboard" id = "T">T</button>
-		<button class="keyboard" id = "Y">Y</button>
-		<button class="keyboard" id = "U">U</button>
-		<button class="keyboard" id = "I">I</button>
-		<button class="keyboard" id = "O">O</button>
-		<button class="keyboard" id = "P">P</button>
+	<h2></h2>
+	<h1 id="h1_1"> Hangman </h1>
+	<img class="img_1" src= "img/cover.png">
+	<div class="button_1">
+		<button id="play" > Play</button>
 	</div>
 
-	<div class="keydiv_2">
-		<button class="keyboard" id = "A">A</button>
-		<button class="keyboard" id = "S">S</button>
-		<button class="keyboard" id = "D">D</button>
-		<button class="keyboard" id = "F">F</button>
-		<button class="keyboard" id = "G">G</button>
-		<button class="keyboard" id = "H">H</button>
-		<button class="keyboard" id = "J">J</button>
-		<button class="keyboard" id = "K">K</button>
-		<button class="keyboard" id = "L">L</button>
-	</div>
-
-	<div class="keydiv_3">
-		<button class="keyboard" id = "Z">Z</button>
-		<button class="keyboard" id = "X">X</button>
-		<button class="keyboard" id = "C">C</button>
-		<button class="keyboard" id = "V">V</button>
-		<button class="keyboard" id = "B">B</button>
-		<button class="keyboard" id = "N">N</button>
-		<button class="keyboard" id = "M">M</button>
-	</div>
-
-	<h3 class="category">Category: fruits</h3>
-	<div id="container"></div>
-	<img id="hangman" src="img/0.png">
+	
 
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="app.js"></script>
-	
-
-
-	
 </body>
-
 
 </html>
 
 
-<!-- place hangman on left and letters on the right-->
-<!-- maybe have different sounds for different alphabets when hovered-->
-<!-- a universal pressed sound-->
