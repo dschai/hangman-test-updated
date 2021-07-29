@@ -45,7 +45,7 @@ class Rectangle {
 var path = window.location.pathname;
 var page = path.split("/").pop();
 
-if (page == "") {
+if (page == "page.html") {
 	document.getElementById("A").addEventListener("click", function() {
 		var audio1 = new Audio("sounds/1.mp3");
 		audio1.play();	
@@ -231,9 +231,9 @@ if (page == "") {
 
 	function drawSquares() {
 	  // Draw squares for secret word & hide alphabets
-	  for(var i = 0; i < chosenWord.length; i++) {
-		$('#container').append('<div class="alphabet ' + i + '"></div>');
-		$('#container').find(":nth-child(" + (i + 1) + ")").text(chosenWordArray[i]);
+	  for(var i = 1; i <= chosenWord.length; i++) {
+		$('#box').append('<div class="alphabet ' + (i-1) + '"></div>');
+		$('#box').find(":nth-child(" + (i) + ")").text(chosenWordArray[i-1]);
 		$(".alphabet").css("color", "#ABE3BE"); 
 	  } 
 	}
@@ -251,9 +251,9 @@ if (page == "") {
 		checkWord = () => {
 		  // Check if clicked alphabet is in secret word
 		  var input = $(this).text();
-		  for (var i = 0; i < chosenWord.length; i++) {
-			  if (input === chosenWord.charAt(i)) {
-				  $('#container').find(":nth-child(" + (1 + i) + ")").css("color", "#191970").addClass("success");
+		  for (var i = 1; i <= chosenWord.length; i++) {
+			  if (input === chosenWord.charAt(i-1)) {
+				  $('#box').find(":nth-child(" + (i) + ")").css("color", "#191970").addClass("success");
 				  winMove = true;
 			  }
 		  }
@@ -270,7 +270,7 @@ if (page == "") {
 			  if ( $(this).hasClass("success") ) {
 				  rightChoices.push(index);
 				  if (chosenWordArray.length === rightChoices.length) {
-					  $("#container").hide();
+					  $("#box").hide();
 					  $("button").attr("disabled", "true");
 					  $(".category").text("Great job! you guessed the secret word!");
 					  $(".category").append("<br><button class='restart'>Start Over?</button>");
@@ -290,7 +290,7 @@ if (page == "") {
 		  }
 		  // If wrong guesses gets to 7 exit the game
 		  if (wrongNum === 7) {
-			$("#container").hide();
+			$("#box").hide();
 			$("button").attr("disabled", "true");
 			$(".category").text("You Lost. The real answer is " + chosenWord);
 			$(".category").append("<br><button class='restart'>Start Over?</button>");
