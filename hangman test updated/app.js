@@ -218,9 +218,9 @@ if (page == "page.html") {
 	var printCat;
 	printCat = () => {
 		if ($.inArray("celery", randCatList) > -1) {
-		  $(".category").text("Category is vegetable");
+		  $(".message").text("Category is vegetable");
 	  } else {
-		  $(".category").text("Category is color");
+		  $(".message").text("Category is color");
 	  }
 	}
 	printCat();
@@ -271,8 +271,8 @@ if (page == "page.html") {
 				  rightChoices.push(index);
 				  if (chosenWordArray.length === rightChoices.length) {
 					$("button").attr("disabled", "true");
-					$(".category").text("Great job! you guessed the secret word!");
-					$(".category").append("<br><button class='restart'>Start Over?</button>");
+					$(".message").text("Great job! you guessed the secret word!");
+					$(".message").append("<br><button class='restart'>Start Over?</button>");
 					$("#box").hide();
 					
 
@@ -293,8 +293,8 @@ if (page == "page.html") {
 		  // If wrong guesses gets to 7 exit the game
 		  if (wrongNum === 7) {
 			$("button").attr("disabled", "true");
-			$(".category").text("You Lost. The real answer is " + chosenWord);
-			$(".category").append("<br> <button class='restart'>Start Over?</button>");
+			$(".message").text("You Lost. The real answer is " + chosenWord);
+			$(".message").append("<br> <button class='restart'>Start Over?</button>");
 			
 			$("#box").hide();
 
