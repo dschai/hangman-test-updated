@@ -1,3 +1,4 @@
+
 class Rectangle {
 	constructor() {
 	}
@@ -198,12 +199,10 @@ if (page == "page.html") {
 	  //function expression for picking a random category
 	  var pickCategory = function (categories) {
 		var num = Math.floor((Math.random() * categories.length));
-		console.log(num)
 		return categories[num];
 	  }
 
 	var randCatList = pickCategory(window.categories);
-	console.log(randCatList);
 
 	//function declaration for picking a random word out of a category array
 	function pickWord(catList) {
@@ -231,8 +230,9 @@ if (page == "page.html") {
 	  // Draw squares for secret word & hide alphabets
 	  for(var i = 1; i <= chosenWord.length; i++) {
 		$('#box').append('<div class="alphabet ' + (i-1) + '"></div>');
-		$('#box').find(":nth-child(" + (i) + ")").text(chosenWordArray[i-1]);
 		$(".alphabet").css("color", "#ABE3BE"); 
+		$('#box').find(":nth-child(" + (i) + ")").text(chosenWordArray[i-1]);
+		
 	  } 
 	}
 	drawSquares();
@@ -241,8 +241,8 @@ if (page == "page.html") {
 	// Button click function
 	var wrongNum = 0;
 	$("button").on("click", function(){
-		$(this).addClass("used");
 		$(this).attr("disabled", "true");
+		$(this).addClass("defunct");
 		var winMove = false;
 
 		var checkWord;
@@ -251,7 +251,9 @@ if (page == "page.html") {
 		  var input = $(this).text();
 		  for (var i = 1; i <= chosenWord.length; i++) {
 			  if (input === chosenWord.charAt(i-1)) {
-				  $('#box').find(":nth-child(" + (i) + ")").css("color", "#191970").addClass("success");
+				  var target =  $('#box').find(":nth-child(" + (i) + ")");
+				  target.addClass("success");
+				  target.css("color", "#191970");
 				  winMove = true;
 			  }
 		  }
