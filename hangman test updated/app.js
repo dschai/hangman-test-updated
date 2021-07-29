@@ -270,10 +270,11 @@ if (page == "page.html") {
 			  if ($(this).attr('class').indexOf("success") >= 0) {
 				  rightChoices.push(index);
 				  if (chosenWordArray.length === rightChoices.length) {
+					$("button").attr("disabled", "true");
 					$(".category").text("Great job! you guessed the secret word!");
 					$(".category").append("<br><button class='restart'>Start Over?</button>");
 					$("#box").hide();
-					$("button").attr("disabled", "true");
+					
 
 				  }
 			  }
@@ -291,9 +292,10 @@ if (page == "page.html") {
 		  }
 		  // If wrong guesses gets to 7 exit the game
 		  if (wrongNum === 7) {
+			$("button").attr("disabled", "true");
 			$(".category").text("You Lost. The real answer is " + chosenWord);
 			$(".category").append("<br> <button class='restart'>Start Over?</button>");
-			$("button").attr("disabled", "true");
+			
 			$("#box").hide();
 
 		  }
