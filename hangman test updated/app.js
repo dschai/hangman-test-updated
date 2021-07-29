@@ -1,11 +1,9 @@
 class Rectangle {
-	constructor(height, width) {
-	  this.height = height;
-	  this.width = width;
+	constructor() {
 	}
  
 	//add svg rectangle to the dom
-	addToDom(width, height) {
+	addToDom() {
 	  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	  var svgNS = svg.namespaceURI;
  
@@ -22,8 +20,8 @@ class Rectangle {
   }
 
   //add a small decorative red square
-  var rec = new Rectangle(10, 10);
-  rec.addToDom(10, 10);
+  var rec = new Rectangle();
+  rec.addToDom();
 
  
   //play button leads to page.html
@@ -228,7 +226,7 @@ if (page == "page.html") {
 	}
 	printCat();
 
-
+	//function declarations for drawing squares
 	function drawSquares() {
 	  // Draw squares for secret word & hide alphabets
 	  for(var i = 1; i <= chosenWord.length; i++) {
