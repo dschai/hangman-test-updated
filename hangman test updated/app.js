@@ -238,7 +238,7 @@ if (page == "page.html") {
 	drawSquares();
 
 
-	// Button click function
+	
 	var wrongNum = 0;
 	$("button").on("click", function(){
 		$(this).attr("disabled", "true");
@@ -247,7 +247,7 @@ if (page == "page.html") {
 
 		var checkWord;
 		checkWord = () => {
-		  // Check if clicked alphabet is in secret word
+		
 		  var input = $(this).text();
 		  for (var i = 1; i <= chosenWord.length; i++) {
 			  if (input === chosenWord.charAt(i-1)) {
@@ -267,13 +267,14 @@ if (page == "page.html") {
 		  //Check who wins
 		  var rightChoices = [];
 		  $(".alphabet").each(function( index ) {
-			  if ( $(this).hasClass("success") ) {
+			  if ($(this).attr('class').indexOf("success") >= 0) {
 				  rightChoices.push(index);
 				  if (chosenWordArray.length === rightChoices.length) {
-					  $("#box").hide();
-					  $("button").attr("disabled", "true");
-					  $(".category").text("Great job! you guessed the secret word!");
-					  $(".category").append("<br><button class='restart'>Start Over?</button>");
+					$(".category").text("Great job! you guessed the secret word!");
+					$(".category").append("<br><button class='restart'>Start Over?</button>");
+					$("#box").hide();
+					$("button").attr("disabled", "true");
+
 				  }
 			  }
 		  });
@@ -290,10 +291,11 @@ if (page == "page.html") {
 		  }
 		  // If wrong guesses gets to 7 exit the game
 		  if (wrongNum === 7) {
-			$("#box").hide();
-			$("button").attr("disabled", "true");
 			$(".category").text("You Lost. The real answer is " + chosenWord);
-			$(".category").append("<br><button class='restart'>Start Over?</button>");
+			$(".category").append("<br> <button class='restart'>Start Over?</button>");
+			$("button").attr("disabled", "true");
+			$("#box").hide();
+
 		  }
 		}
 		processWrong();
