@@ -243,6 +243,7 @@ if (page == "page.html") {
 	
 	var wrongNum = 0;
 	$("button").on("click", function(){
+
 		$(this).attr("disabled", "true");
 		$(this).addClass("defunct");
 		var winMove = false;
@@ -250,9 +251,9 @@ if (page == "page.html") {
 		var checkWord;
 		checkWord = () => {
 		
-		  var input = $(this).text();
+		//   var input = $(this).text();
 		  for (var i = 1; i <= chosenWord.length; i++) {
-			  if (chosenWord.charAt(i-1) === input) {
+			  if (chosenWord.charAt(i-1) === $(this).text()) {
 				  winMove = true;
 				  var target =  $('#box').find(":nth-child(" + (i) + ")");
 				  target.addClass("success");
@@ -267,7 +268,6 @@ if (page == "page.html") {
 
 		//function expression
 		var processCorrectGuesses = function() {
-		  //Check who wins
 		  var rightChoices = [];
 		  $(".alphabet").each(function( index ) {
 			  if ($(this).attr('class').indexOf("success") >= 0) {
