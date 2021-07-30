@@ -214,16 +214,7 @@ if (page == "page.html") {
 	var chosenWord = pickWord(randCatList);
 	var chosenWordArray = chosenWord.split("");
 
-	//arrow function for printing category name
-	var printCat;
-	printCat = () => {
-		if ($.inArray("celery", randCatList) > -1) {
-		  $(".message").text("Category is vegetable");
-	  } else {
-		  $(".message").text("Category is color");
-	  }
-	}
-	printCat();
+
 
 	//function declarations for drawing squares
 	function drawSquares() {
@@ -238,6 +229,17 @@ if (page == "page.html") {
 	drawSquares();
 
 
+	//arrow function for printing category name
+	var printCat;
+	printCat = () => {
+		if ($.inArray("celery", randCatList) > -1) {
+			$(".message").text("Category is vegetable");
+		} else {
+			$(".message").text("Category is color");
+		}
+	}
+	printCat();
+
 	
 	var wrongNum = 0;
 	$("button").on("click", function(){
@@ -250,11 +252,12 @@ if (page == "page.html") {
 		
 		  var input = $(this).text();
 		  for (var i = 1; i <= chosenWord.length; i++) {
-			  if (input === chosenWord.charAt(i-1)) {
+			  if (chosenWord.charAt(i-1) === input) {
+				  winMove = true;
 				  var target =  $('#box').find(":nth-child(" + (i) + ")");
 				  target.addClass("success");
 				  target.css("color", "#191970");
-				  winMove = true;
+				  
 			  }
 		  }
 		}
@@ -270,9 +273,17 @@ if (page == "page.html") {
 			  if ($(this).attr('class').indexOf("success") >= 0) {
 				  rightChoices.push(index);
 				  if (chosenWordArray.length === rightChoices.length) {
-					$("button").attr("disabled", "true");
-					$(".message").text("Great job! you guessed the secret word!");
-					$(".message").append("<br><button class='restart'>Start Over?</button>");
+					var buttons = document.querySelectorAll("button");
+					for (var i = 0; i < buttons.length; i++) {
+						buttons[i].setAttribute("disabled", "true");
+					}
+
+					var message = document.getElementsByClassName("message");
+					message[0].innerHTML = "Great job! you guessed the secret word!";
+					
+					message[0].innerHTML += "<br><button class='restart'>Start Over?</button>";
+
+					
 					$("#box").hide();
 					
 
@@ -285,16 +296,21 @@ if (page == "page.html") {
 
 		//function declaration
 		function processWrong() {
-		  // If no match, increase count and add appropriate image
+		 
 		  if (winMove === false) {
 			wrongNum += 1;
-			$("#hangman").attr("src", "img/" + wrongNum+ ".png");
+			$("#picture").attr("src", "img/" + wrongNum+ ".png");
 		  }
-		  // If wrong guesses gets to 7 exit the game
-		  if (wrongNum === 7) {
-			$("button").attr("disabled", "true");
-			$(".message").text("You Lost. The real answer is " + chosenWord);
-			$(".message").append("<br> <button class='restart'>Start Over?</button>");
+		  
+		  if (wrongNum >= 7) {
+			var buttons = document.querySelectorAll("button");
+			for (var i = 0; i < buttons.length; i++) {
+				buttons[i].setAttribute("disabled", "true");
+			}
+
+			var message = document.getElementsByClassName("message");
+			message[0].innerHTML = "You Lost. The real answer is " + chosenWord;
+			message[0].innerHTML += "<br><button class='restart'>Start Over?</button>";
 			
 			$("#box").hide();
 
