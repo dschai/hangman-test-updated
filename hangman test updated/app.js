@@ -251,7 +251,6 @@ if (page == "page.html") {
 		var checkWord;
 		checkWord = () => {
 		
-		//   var input = $(this).text();
 		  for (var i = 1; i <= chosenWord.length; i++) {
 			  if (chosenWord.charAt(i-1) === $(this).text()) {
 				  winMove = true;
@@ -266,7 +265,7 @@ if (page == "page.html") {
 
 
 
-		//function expression
+		//function expression for when the user wins
 		var processCorrectGuesses = function() {
 		  var rightChoices = [];
 		  $(".alphabet").each(function( index ) {
@@ -294,7 +293,7 @@ if (page == "page.html") {
 		}
 		processCorrectGuesses();
 
-		//function declaration
+		//function declaration for when the user loses
 		function processWrong() {
 		 
 		  if (winMove === false) {
